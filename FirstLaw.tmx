@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="160" height="80" tilewidth="32" tileheight="32" infinite="0" nextobjectid="1">
+ <tileset firstgid="1" name="ground" tilewidth="32" tileheight="32" tilecount="6" columns="6">
+  <image source="tiles/groundCompiled.png" width="192" height="32"/>
+ </tileset>
+ <tileset firstgid="7" name="lab" tilewidth="32" tileheight="32" tilecount="96" columns="12">
+  <image source="tiles/lab.png" width="384" height="256"/>
+  <tile id="0">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="103" name="objects" tilewidth="32" tileheight="32" tilecount="18" columns="9">
+  <image source="tiles/objects.png" width="288" height="64"/>
+ </tileset>
+ <tileset firstgid="121" name="objects" tilewidth="32" tileheight="32" tilecount="4" columns="2">
+  <image source="tiles/heart2.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="125" name="house" tilewidth="32" tileheight="32" tilecount="48" columns="8">
+  <image source="tiles/house.png" width="256" height="192"/>
+ </tileset>
+ <tileset firstgid="173" name="triggers" tilewidth="32" tileheight="32" tilecount="12" columns="6">
+  <image source="tiles/triggers.png" width="192" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="playerStart" value="down"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="entry" value="playerHouse.tmx"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="entry" value="playerHouse.tmx"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="water" value=""/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="185" name="sprites" tilewidth="32" tileheight="32" tilecount="8" columns="4">
+  <image source="tiles/sprites.png" width="128" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="frames" value="8"/>
+    <property name="height" value="32"/>
+    <property name="mspf" value="350"/>
+    <property name="src" value="sprites/water.png"/>
+    <property name="width" value="32"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="frames" value="4"/>
+    <property name="height" value="32"/>
+    <property name="mspf" value="350"/>
+    <property name="src" value="sprites/flower.png"/>
+    <property name="width" value="32"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="background" width="160" height="80">
+  <data encoding="base64" compression="zlib">
+   eJzt2ltuwjAUBNBA97/n/hQJ3Bgn9s3D9jmSVUUQhOTpcBN4LMvyWFk/f2vtsW/Pz629r/M6ZmxbcyB/HKGUm6sXY7s6X/I3t/Tz7uq8pe+DsaX7/lw+8xB1nP7NPV/+5nJm/z2X/3nTf3PL7XspJ2vZ+nZcyuHrWP7msvb5+75qO27L+WuPb8lf60xQO0cQrzV/a/vUcv6W/NV+/rcu4h3VfzXn7c3f2T1IvKj8vV/f1uRP/80pt+9XrfQ+0Brz3zhy+96yTy3H7/8HuT3Xf+O4a/992/OorO89h3i5fb+qB81/cyn1X3o90np9HNF/5r9xpPteup8XnUH3/+ZW6r+zl/lvLrl9b/3+t7YHj+q/vb/X1n/nKPVf6+/uj+i/mt5L37f57x7Sfc/NY7nVy/yn/+6px/6Tv3FE5e+K+c/1R/9K+avJUcty/2Uuaf4ivsc4On/uP48juv9a+1L/zSWXv4iOOTp/5r/+pfnbe52Yy8/Wpf/m1mP+zH/j6DF/+m8cPefP/Ne/6Pydcf+FccgfV0rzFPE9qZmLreQPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7u8Xab4VwA==
+  </data>
+ </layer>
+ <layer name="foreground" width="160" height="80">
+  <data encoding="base64" compression="zlib">
+   eJzt2NeTFFUYQHEeRLIgSEZBkkgSwYggqOSsKNmAiKCiJUmfCJIERREBBQERxYDyR3petmpra2budO+F29w+v6pTXbW73X0f9vtqanr0aGwX7W7yu1Z//yl91ula9jmqt89pb4m//4K+7HQt+xzVQ8e+iXVttv/KXpW3jn0T69ps/5W9Km9V3TNVPZfiquqeqeq5FFdozxyiw3SEjtJXdIyO04k2nl/2/kbniv1Z1c+k6YX2zEk6RV/TaTpD39C3dLaN55e9v9G5Yn9W9TNpeqGZ/o6+p3P0A52nH+kCXWzj+WXvb7X/Ukn9/hyFZvoS/UQ/02W6Qr/QVbrWxvPL3t9q/6WS+v05ajbTn9Aeuk6/0g36jW7S7/QH3Wrx3O7e7/6rh2YzfYAO0p/0F/1N/9Bt+pf+ozstntvd+91/9VDVmXb/1UNVZ9r9Vw9VnWn3Xz1Udabdf/UQe6Z7UW/qQ32pH/WnAfQQDaRB9DANLniu1Psn9ftzFHumh9AjNJSG0XAaQSNpFI2mMfQoPVbwXKn3T+r35yg00x/Rxw2uHd/vdTWWxtHjNJ4m0ESaRJPpCZpCT9LUgudKvX9Svz9HoZneR/sbXDu+3+tqGk2nGTSTnqJZ9DTNpjn0DD1LzxU8V+r9k/r9OYo908/TC/QizaWXaB7Np5dpAS2kV+jVgudKvX9Svz9HsWf6NVpEi2kJLaVltJxW0EpaRatpTcFzpd4/qd+fo9gzvZbW0ev0Bq2nN+kt2kAbaRNtpi0Fz5V6/6R+f45iz/RW2kZv0zv0Lr1H2+l92kEf0E76sOC5Uu+f1O/PUVVn2v1XD1WdafdfPcSe6dD3hV1/XuRcqfdP6vfnKPZMh74v7PrzIudKvX9Svz9HoZnuGeheniv1/kn9/hyFZvqBFr97MPJZOnP/1UNoplP9/7n/6sH9177U78/R/bj/Ul8Vz/24/1JfFU9otkP/f+4adUdotkP/f+4aSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZLuvv8B4Uc5vg==
+  </data>
+ </layer>
+ <layer name="sprites" width="160" height="80">
+  <data encoding="base64" compression="zlib">
+   eJzt2EEOgjAQQFGurXIx08uJW2I1NZTp0PeSCSy7mHxClwUAAAAAYF63be7Rh2Baj23W6EOQno4RScfo4eiu6SQtju6aTvKNPhFJn7gCHSWSjtKDrhHpU9fKbuBMpfLO+MqPZwb2L6cr7N6b7y9AO//TRHJPSE/6RiR94x+6NYdnZWrOurPRrTm07N+I94U6mVtr/0ajk7ll3z9ys39Esn9Esn8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ6wX070fd
+  </data>
+ </layer>
+ <layer name="triggers" width="160" height="80" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJzt2tuOgyAUBdD+/7/M/fp5ow99aWTEij3IWSshJFWkiZw9NMzlsuxtau+Fa//dX+q3Pofcfqb2u+H+Vutv67yc29q6ie4Z2zVvoteZ9ZdTr++51+9FW73ut6y/HNbe896/j/eOX7oevRdQE+2t5d/1eqmvff7W8Uvveu1Zj+pp54z5FyV6/hGdMf+iRM8/olJN3+bUy9ReFz5fe+7e8TXf9VGi5x9RqaZvc+prat8Ln689997x8i+HXmta/uXQa03Lvxx6rWn5l0OvNS3/cmhd063OEuRfDq1rutVZgvzLofX5h/xji9bnH/KPLTLt/56m9rxjvPxrL9P+72NqnzvGy7/2js6/0rmv/R+zo/OvdO5r/8es15qWfzn0WtPyL4dMv3/3ip5/RJl+/+4VPf+IanKolF1HZoH8y6Hm/KPk0esvOn+i5x9RTf6VHPku5F8O8q9e9PwjOmP+Rfe0c8b8i+5pp6bmS2QNe9X8P1/JfL/1BwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMf7Aw6wJNo=
+  </data>
+ </layer>
+</map>

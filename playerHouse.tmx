@@ -43,12 +43,12 @@
  </tileset>
  <layer name="background" width="18" height="18">
   <data encoding="base64" compression="zlib">
-   eJzN0ccKAjEUheEo2N0o2N1YYu+96/s/lf8mcBmSMTNu5sLH4WYgOTBKKZVCWmQGWeSQ99jNVFAVWUMdDTQ9djM99EVqjDDGROzBXGMj7tliJ/KIE864iD2Yb3zEPa73bKkt52Zc78nUId/j9LFllD5h6eqzxAoFFFFCWZz79nnihRba6KArzqP2mWKGORZ/9Lnihjselj76R5+k/a8BhiLj9tnjINK3T5LmCwmFKSc=
+   eJzN0ccKwkAUheFRsLtRsLuxxN571/d/Kv/NwOWSiWNw4cDHYW7g5hiNMSaBpMgU0sgg63G3p4SyyAqqqKHucbeng67IAAMMMRJ3nUusxJ41NiL3OOCIk7jrfOIl9rjeF5ZByNweu9/Ow94fRDzXffQ+na7nuk/cdH2fORbIIY8CimLu2+eOBxpoooW2mOvf+anPGBNMMRNz/Z0+9TnjgituYi73RPX5Nl19fvV/9dAXGbfPFjuRvn3+6bwB7nYpJw==
   </data>
  </layer>
- <layer name="triggers" width="18" height="18">
+ <layer name="triggers" width="18" height="18" visible="0">
   <data encoding="base64" compression="zlib">
-   eJzVlGsKwDAIg3u1Pbpn73+eOWigBEIrsh/7IIhgJag0p5SyaQvEV3dVCcRSe3J/wLlC+QGcK+AnCvxEYT+TaXa8Rz372U2How/qe/NRe2R681F7ZP7mZ5Sv78d7R+p+vHeE2fE8F9PaxN6/oThNVxNHeABhECQV
+   eJxzZWBgcAViNwpoEPaGYh8KaB+omejmwwA6HxfA5R4YQOfjAjD3UApg7qEUDDX34IpHUt2DKx6HunuIBbSOL0cgdqKCe9yB2INE9zAwYIanMxC7INGEyg1cwBOIvZBoYgAAy+Ag3w==
   </data>
  </layer>
 </map>
