@@ -2,6 +2,13 @@ import pygame
 import tmx
 import random
 
+# Los Colores
+NEGRO = (0, 0, 0)
+BLANCO = (255, 255, 255)
+VERDE = (0, 255, 0)
+AZUL = (0, 0, 255)
+ROJO = (255, 0, 0)
+
 class Player(pygame.sprite.Sprite):
     def __init__(self, location, orientation, *groups):
         super(Player, self).__init__(*groups)
@@ -108,7 +115,7 @@ class Player(pygame.sprite.Sprite):
         game.tilemap.set_focus(self.rect.x, self.rect.y)
 
 # class EdibleHearts(pygame.sprite.Sprite):
-#     def __init__(self, )
+#     def __init__(self, location)
 
 class Satan(pygame.sprite.Sprite):
     def __init__(self, location, orientation, *groups):
@@ -185,8 +192,7 @@ class Satan(pygame.sprite.Sprite):
         # Collision detection:
         # Reset to the previous rectangle if player collides
         # with anything in the foreground layer
-        if len(game.tilemap.layers['triggers'].collide(self.rect, 
-                                                        'solid')) > 0:
+        if len(game.tilemap.layers['triggers'].collide(self.rect, 'solid')) > 0:
             self.rect = lastRect
         # Area entry detection:
         elif len(game.tilemap.layers['triggers'].collide(self.rect, 
@@ -194,7 +200,7 @@ class Satan(pygame.sprite.Sprite):
             entryCell = game.tilemap.layers['triggers'].find('entry')[0]
             game.fadeOut()
             game.initArea(entryCell['entry'])
-            
+
             return
         # Switch to the walking sprite after 32 pixels 
         if self.dx == 32:
@@ -258,7 +264,7 @@ class SpriteLoop(pygame.sprite.Sprite):
 class Game(object):
     def __init__(self, screen):
         self.screen = screen
-    
+
     def fadeOut(self):
         """Animate the screen fading to black for entering a new area"""
         clock = pygame.time.Clock()
@@ -274,7 +280,7 @@ class Game(object):
         clock.tick(15)
         # screen.fill((255,255,255,50))
         pygame.display.flip()
-        
+
     def initArea(self, mapFile):
         """Load maps and initialize sprite layers for each new area"""
         self.tilemap = tmx.load(mapFile, screen.get_size())
@@ -293,14 +299,15 @@ class Game(object):
         startCell = self.tilemap.layers['triggers'].find('playerStart')[0]
         self.player = Player((startCell.px, startCell.py), 
                              startCell['playerStart'], self.players)
-        self.satan = Satan((startCell.px-64, startCell.py-64), 
+        self.satan = Satan((startCell.px-128, startCell.py-128), 
                              startCell['playerStart'], self.players)
         self.tilemap.layers.append(self.players)
         self.tilemap.set_focus(self.player.rect.x, self.player.rect.y)  
-            
+
     def main(self):
         clock = pygame.time.Clock()
         self.initArea('FirstLaw.tmx')
+        game_over = False
         
         while 1:
             dt = clock.tick(30)
@@ -311,10 +318,30 @@ class Game(object):
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                     return
 
-            self.tilemap.update(dt, self)
-            screen.fill((0,0,0))
-            self.tilemap.draw(self.screen)
+            if (not game_over) and collisionDetect(self.player.rect.x,self.satan.rect.x,self.player.rect.y,self.satan.rect.y,64,64,64,64):
+                print("Satan Collision Detected")
+                game_over = True;
+
+            if not game_over:
+                self.tilemap.update(dt, self)
+                screen.fill(BLANCO)
+                self.tilemap.draw(self.screen)
+
+            else :
+                screen.fill(NEGRO)
+                font = pygame.font.Font(None, 36)
+                text = font.render("No puedes ganar sin Jesucristo", True, ROJO)
+                text_rect = text.get_rect()
+                text_x = screen.get_width() / 2 - text_rect.width / 2
+                text_y = screen.get_height() / 2 - text_rect.height / 2
+                screen.blit(text, [text_x, text_y])
+
             pygame.display.flip()
+
+def collisionDetect(x1,x2,y1,y2,w1,w2,h1,h2):
+    if x1 > x2 and x1 < x2 + w2 or x1 + w1 > x2 and x1 + w1 < x2 + w2:
+        if y1 > y2 and y1 < y2 + h2 or y1 + h1 > y2 and y1 + h1 < y2 + h2:
+            return True
 
 if __name__ == '__main__':
     pygame.init()
