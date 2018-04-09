@@ -115,7 +115,9 @@ class Player(pygame.sprite.Sprite):
         game.tilemap.set_focus(self.rect.x, self.rect.y)
 
 # class EdibleHearts(pygame.sprite.Sprite):
-#     def __init__(self, location)
+#     def __init__(self, location):
+
+
 
 class Satan(pygame.sprite.Sprite):
     def __init__(self, location, orientation, *groups):
@@ -278,7 +280,7 @@ class Game(object):
             self.screen.blit(blackRect, (0,0))  
             pygame.display.flip()
         clock.tick(15)
-        # screen.fill((255,255,255,50))
+        screen.fill((255,255,255,50))
         pygame.display.flip()
 
     def initArea(self, mapFile):
@@ -286,6 +288,7 @@ class Game(object):
         self.tilemap = tmx.load(mapFile, screen.get_size())
         self.players = tmx.SpriteLayer()
         self.objects = tmx.SpriteLayer()
+        self.hearts = tmx.SpriteLayer()
         # Initializing other animated sprites
         try:
             for cell in self.tilemap.layers['sprites'].find('src'):
@@ -299,16 +302,22 @@ class Game(object):
         startCell = self.tilemap.layers['triggers'].find('playerStart')[0]
         self.player = Player((startCell.px, startCell.py), 
                              startCell['playerStart'], self.players)
-        self.satan = Satan((startCell.px-128, startCell.py-128), 
-                             startCell['playerStart'], self.players)
+        if mapFile == 'FirstLaw.tmx':
+            satanStart = self.tilemap.layers['triggers'].find('satanStart')[0]
+            self.satan = Satan((satanStart.px, satanStart.py), 
+                                 satanStart['satanStart'], self.players)
         self.tilemap.layers.append(self.players)
-        self.tilemap.set_focus(self.player.rect.x, self.player.rect.y)  
+        self.numHearts = 10
+        for x in range(0,self.numHearts):
+            print(x)
+
+        self.tilemap.set_focus(self.player.rect.x, self.player.rect.y) 
 
     def main(self):
         clock = pygame.time.Clock()
         self.initArea('FirstLaw.tmx')
         game_over = False
-        
+
         while 1:
             dt = clock.tick(30)
 
@@ -317,12 +326,21 @@ class Game(object):
                     return
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                     return
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                    print("wow")
+                    self.player.rect.y += 1024
+                    self.satan.rect.y += 1024
 
-            if (not game_over) and collisionDetect(self.player.rect.x,self.satan.rect.x,self.player.rect.y,self.satan.rect.y,64,64,64,64):
+
+            if (not game_over) and self.player.rect.colliderect(self.satan.rect):
                 print("Satan Collision Detected")
                 game_over = True;
 
             if not game_over:
+                if not self.numHearts :
+                    #self.hearts is empty
+                    pass
+
                 self.tilemap.update(dt, self)
                 screen.fill(BLANCO)
                 self.tilemap.draw(self.screen)
@@ -330,18 +348,13 @@ class Game(object):
             else :
                 screen.fill(NEGRO)
                 font = pygame.font.Font(None, 36)
-                text = font.render("No puedes ganar sin Jesucristo", True, ROJO)
+                text = font.render("No puedes ganar sin Jesucristo", True, AZUL)
                 text_rect = text.get_rect()
                 text_x = screen.get_width() / 2 - text_rect.width / 2
                 text_y = screen.get_height() / 2 - text_rect.height / 2
                 screen.blit(text, [text_x, text_y])
 
             pygame.display.flip()
-
-def collisionDetect(x1,x2,y1,y2,w1,w2,h1,h2):
-    if x1 > x2 and x1 < x2 + w2 or x1 + w1 > x2 and x1 + w1 < x2 + w2:
-        if y1 > y2 and y1 < y2 + h2 or y1 + h1 > y2 and y1 + h1 < y2 + h2:
-            return True
 
 if __name__ == '__main__':
     pygame.init()
