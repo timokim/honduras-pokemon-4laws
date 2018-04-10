@@ -5,9 +5,9 @@ import random
 # Los Colores
 NEGRO = (0, 0, 0)
 BLANCO = (255, 255, 255)
+ROJO = (255, 0, 0)
 VERDE = (0, 255, 0)
 AZUL = (0, 0, 255)
-ROJO = (255, 0, 0)
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, location, orientation, *groups):
@@ -112,12 +112,20 @@ class Player(pygame.sprite.Sprite):
             self.setSprite()    
             self.dx = 0
         
+        for x in game.heartlist:
+            if x.rect == self.rect:
+                x.kill()
+                game.heartlist.remove(x)
+                game.numHearts -= 1
+
         game.tilemap.set_focus(self.rect.x, self.rect.y)
 
-# class EdibleHearts(pygame.sprite.Sprite):
-#     def __init__(self, location):
-
-
+class Heart(pygame.sprite.Sprite):
+    def __init__(self, location, *groups):
+        super(Heart, self).__init__(*groups)
+        self.image = pygame.image.load('tiles/heart2.png')
+        self.imageDefault = self.image.copy()
+        self.rect = pygame.Rect(location, (64,64))
 
 class Satan(pygame.sprite.Sprite):
     def __init__(self, location, orientation, *groups):
@@ -221,8 +229,6 @@ class Satan(pygame.sprite.Sprite):
             self.setSprite()    
             self.dx = 0
         
-        # game.tilemap.set_focus(self.rect.x, self.rect.y)
-        
     def update(self, dt, game):
         self.random_move(dt, game)
 
@@ -302,21 +308,30 @@ class Game(object):
         startCell = self.tilemap.layers['triggers'].find('playerStart')[0]
         self.player = Player((startCell.px, startCell.py), 
                              startCell['playerStart'], self.players)
+        satanStart = self.tilemap.layers['triggers'].find('satanStart')[0]
         if mapFile == 'FirstLaw.tmx':
-            satanStart = self.tilemap.layers['triggers'].find('satanStart')[0]
             self.satan = Satan((satanStart.px, satanStart.py), 
                                  satanStart['satanStart'], self.players)
+        
+        self.numHearts = 2
+        self.heartlist = []
+        # for x in range(0,self.numHearts):
+        ax = Heart((satanStart.px-256,satanStart.py-64), self.hearts)
+        ay = Heart((satanStart.px,satanStart.py+128), self.hearts)
+        self.heartlist.append(ax)
+        self.heartlist.append(ay)
+
+        self.tilemap.layers.append(self.hearts)
         self.tilemap.layers.append(self.players)
-        self.numHearts = 10
-        for x in range(0,self.numHearts):
-            print(x)
+
 
         self.tilemap.set_focus(self.player.rect.x, self.player.rect.y) 
 
     def main(self):
         clock = pygame.time.Clock()
         self.initArea('FirstLaw.tmx')
-        game_over = False
+        self.game_over = False
+        self.havemoveddown = False
 
         while 1:
             dt = clock.tick(30)
@@ -328,18 +343,24 @@ class Game(object):
                     return
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                     print("wow")
-                    self.player.rect.y += 1024
-                    self.satan.rect.y += 1024
+                    self.player.rect.y -= 1408
+                    self.satan.rect.y -= 1408
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                    self.satan.kill()
 
 
-            if (not game_over) and self.player.rect.colliderect(self.satan.rect):
+
+
+            if (not self.game_over) and self.player.rect.colliderect(self.satan.rect):
                 print("Satan Collision Detected")
-                game_over = True;
+                self.game_over = True;
 
-            if not game_over:
-                if not self.numHearts :
-                    #self.hearts is empty
-                    pass
+
+            if not self.game_over:
+                if not self.numHearts and not self.havemoveddown:
+                    self.player.rect.y += 1408
+                    self.satan.rect.y += 1408
+                    self.havemoveddown = True
 
                 self.tilemap.update(dt, self)
                 screen.fill(BLANCO)
