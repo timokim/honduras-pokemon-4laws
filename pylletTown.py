@@ -363,8 +363,19 @@ class Game(object):
                     self.havemoveddown = True
 
                 self.tilemap.update(dt, self)
-                screen.fill(BLANCO)
+                screen.fill(NEGRO)
                 self.tilemap.draw(self.screen)
+
+                font = pygame.font.Font(None, 24)
+                if self.numHearts == 0:
+                    text = font.render(f"Hearts x {self.numHearts}, you can exit through the right", True, NEGRO)
+                else:
+                    text = font.render(f"Hearts x {self.numHearts}", True, NEGRO)
+
+                text_rect = text.get_rect()
+                text_x = text_rect.height*1.5
+                text_y = screen.get_height() - text_rect.height * 1.5 
+                screen.blit(text, [text_x, text_y])
 
             else :
                 screen.fill(NEGRO)
