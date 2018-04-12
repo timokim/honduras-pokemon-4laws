@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="160" height="120" tilewidth="32" tileheight="32" infinite="0" nextobjectid="1">
+ <tileset firstgid="1" name="ground" tilewidth="32" tileheight="32" tilecount="6" columns="6">
+  <image source="tiles/groundCompiled.png" width="192" height="32"/>
+ </tileset>
+ <tileset firstgid="7" name="lab" tilewidth="32" tileheight="32" tilecount="96" columns="12">
+  <image source="tiles/lab.png" width="384" height="256"/>
+  <tile id="0">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="103" name="objects" tilewidth="32" tileheight="32" tilecount="18" columns="9">
+  <image source="tiles/objects.png" width="288" height="64"/>
+ </tileset>
+ <tileset firstgid="121" name="hearts" tilewidth="32" tileheight="32" tilecount="4" columns="2">
+  <image source="tiles/heart2.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="125" name="house" tilewidth="32" tileheight="32" tilecount="48" columns="8">
+  <image source="tiles/house.png" width="256" height="192"/>
+ </tileset>
+ <tileset firstgid="173" name="mytriggers" tilewidth="32" tileheight="32" tilecount="12" columns="6">
+  <image source="tiles/mytriggers.png" width="192" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="satanStart" value="down"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="185" name="triggers" tilewidth="32" tileheight="32" tilecount="12" columns="6">
+  <image source="tiles/triggers.png" width="192" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="playerStart" value="down"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="entry" value="playerHouse.tmx"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="entry" value="playerHouse.tmx"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="water" value=""/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="197" name="sprites" tilewidth="32" tileheight="32" tilecount="8" columns="4">
+  <image source="tiles/sprites.png" width="128" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="frames" value="8"/>
+    <property name="height" value="32"/>
+    <property name="mspf" value="350"/>
+    <property name="src" value="sprites/water.png"/>
+    <property name="width" value="32"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="frames" value="4"/>
+    <property name="height" value="32"/>
+    <property name="mspf" value="350"/>
+    <property name="src" value="sprites/flower.png"/>
+    <property name="width" value="32"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="background" width="160" height="120">
+  <data encoding="base64" compression="zlib">
+   eJzt3dFu2kAQBdA0VT+XPIbfbyMVybJiMAbnXi/nSCuXlZan0fUETOftrc/p3/pYuE5X+9695+mwVH+fk9W+t+U8Ha7V33nyunHvkfN0UH8k3aq/y7Vx75HzdFhbf+fCvUfO02Gp/uAnqD+Slurv9//1Pvn3ltfPeI9r77n1vehwq/5GXXRYW3+tObj1LB3kH0lH7P/en3CWDvKPJP0fSfKPpCP2f9M9/d+xzb8bvVzT+ST/XoP+j6Q9+r9fs5XOOvnXa4/+b15/Pv9jifwjqbn+9sg99del+e8P+Te+I3z+rP8bV+Pnz/LvdTTnn/5vfPo/kj4WVmvuPSsH6fBVa+dvrqPmnvzrov8jSf9H0pr62/P720df6/+Orfn+K//Gd63+mnLuWbmn/rrIP5L0fyT5/QdJ8o8k+UfSfI7BZf0ZfNFh6f57mq32vXvP02Gp/hrmyqzdM3/muK7VX9OsD/M/xqT+SLpVfy2zZsyfGdPa+kvPmjF/ZkzuvyS5/5Lk/kuS5/9I8vwfSbfqL/G7o3ve0/Mvxyb/SFpbf605uPUsHeQfSUfs/zz/PA75R5L+jyT5R9IR+7/pnv7v2ObfjV6u6XySf69B/0fSHv2f+UestUf/Z/4ba8k/kprrz/N/42v++0P+je8Inz/r/8bV+Pmz/Hsdzfmn/xuf/o+kj4XVmnvPykE6fNXa+ZvrqLkn/7ro/0jS/5G0pv72/P720df6v2Nrvv/Kv/H5/19Ikn8k6f9I8vsPkvR/JM1zT//HT/pcWOn5bOa/vYal++9pttr37j1Ph6X6m2Zh+96W83S4Vn9Nsz7M/xiT+iPpVv21zJoxf2ZMa+svPWvG/BkAAAAAAAAAAAAAAAAAAAAAAID7/QWlLyV1
+  </data>
+ </layer>
+ <layer name="foreground" width="160" height="120">
+  <data encoding="base64" compression="zlib">
+   eJzt3DEOgCAABEF+q6X+v5FfLMJMQiiv24owBgAAALCSa55745u1PfO8G9+sre5EvU+r7kS9T6vuT71Pq+5PvU+r7k+9T6vuT71Pq+5PvU+r7k+9T6vuT71Pq+5PvU+r7k+9T6vuT71Pq+5PvU+r7k+9T6vuT71Pq+5PvU+r7k+9T6vuT71Pq+5PvU+r7k+9T6vuT71Pq+5PvU+r7k+9T6vuT71Pq/6fQP/OVv9PoH8AAAAAAAAAAAAA/1K/e/au+mz1u2fvqs9Wd6Lep1V3ot6nVfen3qdV96fep1X3p96nVfen3qdV96fep1X3p96nVfen3qdV96fep1X3p96nVfen3qelP5T0h1Ldv3qfVt2/ep9W3Z96n1bdn3qfVt2fep9W3Z96n1bdn3qfVt2fep9W3Z96n1bdn3qfVv0/gf6drf6fQP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHofJAHnMQ==
+  </data>
+ </layer>
+ <layer name="sprites" width="160" height="120" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJzt3TEKwzAQAEH//1/B30qVxuBCOHiNbwYO1GtBjeC2DQAAAACAn89h4E76o6Q/SvqjpD9K+qOkP0r6o6Q/SvqjpD9W7Ye5Qn+s2k/OcAf9UfL+8hb6o6Q/SvqjpD9K+qOkP0r6o6Q/SvqjpD9K+pvpeO9PGWaoO9PfbHVn+put7kx/s9Wd6W+2ujP9AQAAAAAAAAD/4v8BJf1R0h8l/VHSHyX9UdIfJf1R0h8l/VHSH6vsn6Fk/xYl/VHy/vIW+qOkP0r6o6Q/SvqjpD9K+qOkP0r6o6Q/Svqbqd6zcDbMUHemv9nqzvQ3W92Z/marO9PfbHVn+gMAAAAAAAAAAAAAAAAAAAAAAAAAAADg6b4PkgVv
+  </data>
+ </layer>
+ <layer name="triggers" width="160" height="120" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJzt3DtKBUEARNG3/71ooomCH9CFOclbgcIdp86BYsLJLg0NfbsBAAAAZ/J27P3CX87t69j3hb+cW90J3dpWd0K3ttW90b9tdW/0b1vdG/3bVvdG/7bVvdG/bXVv9G9b3Rv921b3Rv+2Vb15OPZ40791VW+ejj3f9G/db3vzcuw1/D//229783HsM/w//1vdH+e/bXV/nP+21b3Rv211b/RvW90b/dtW90b/ttW90b9tdW/0b1vdG/3bVvdG/7bV7xPo37b6fQL921Z3Tv+21Z3Tv2115/RvW905/dtWd07/ttWd079t995cdZzbvTdXHQAAAAAAjfqe1z3ytvqe1z3ytroTurWt7oRubat7o3/b6t7o37a6N/q3re6N/m2re6N/2+re6N+2ujf6t63ujf5tq3ujf9vq3ujfNr2hpDeU6v45/22r++f8t63ujf5tq3ujf9vq3ujftro3+ret7o3+bat7o3/b6t7o37a6N/q3rX6fQP+21e8T6N+2unP6t63unP5tqzunf9vqzunftrpz+ret7pz+bbv35qrj3O69ueoAAAAAAAAAAAAAAAAAAAAAAAAAAAD4Oz/7uTIj
+  </data>
+ </layer>
+</map>

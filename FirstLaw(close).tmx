@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="62" height="46" tilewidth="32" tileheight="32" infinite="0" nextobjectid="1">
+ <tileset firstgid="1" name="ground" tilewidth="32" tileheight="32" tilecount="6" columns="6">
+  <image source="tiles/groundCompiled.png" width="192" height="32"/>
+ </tileset>
+ <tileset firstgid="7" name="lab" tilewidth="32" tileheight="32" tilecount="96" columns="12">
+  <image source="tiles/lab.png" width="384" height="256"/>
+  <tile id="0">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="103" name="objects" tilewidth="32" tileheight="32" tilecount="18" columns="9">
+  <image source="tiles/objects.png" width="288" height="64"/>
+ </tileset>
+ <tileset firstgid="121" name="hearts" tilewidth="32" tileheight="32" tilecount="4" columns="2">
+  <image source="tiles/heart2.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="125" name="house" tilewidth="32" tileheight="32" tilecount="48" columns="8">
+  <image source="tiles/house.png" width="256" height="192"/>
+ </tileset>
+ <tileset firstgid="173" name="mytriggers" tilewidth="32" tileheight="32" tilecount="12" columns="6">
+  <image source="tiles/mytriggers.png" width="192" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="satanStart" value="down"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="185" name="triggers" tilewidth="32" tileheight="32" tilecount="12" columns="6">
+  <image source="tiles/triggers.png" width="192" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="playerStart" value="down"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="entry" value="playerHouse.tmx"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="entry" value="playerHouse.tmx"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="water" value=""/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="197" name="sprites" tilewidth="32" tileheight="32" tilecount="8" columns="4">
+  <image source="tiles/sprites.png" width="128" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="frames" value="8"/>
+    <property name="height" value="32"/>
+    <property name="mspf" value="350"/>
+    <property name="src" value="sprites/water.png"/>
+    <property name="width" value="32"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="frames" value="4"/>
+    <property name="height" value="32"/>
+    <property name="mspf" value="350"/>
+    <property name="src" value="sprites/flower.png"/>
+    <property name="width" value="32"/>
+   </properties>
+  </tile>
+ </tileset>
+ <group name="Group 1">
+  <layer name="foreground" width="62" height="46">
+   <data encoding="base64" compression="zlib">
+   eJzt2TEOgCAQRFFvq6Xev5ELECpnEnwv2WxJwqfjOADY2Tnm2njP3GOejffM6l6+1jp/dS+7nq93h95ZenfonaV3h95ZenfonaV3h95ZenfonaV3h95Zf+/d3mnt/4z2ewMAAHJebiB0cQ==
+  </data>
+  </layer>
+  <layer name="background" width="62" height="46">
+   <data encoding="base64" compression="zlib">
+   eJztmuEKwyAMhLuOPW77c77+NpjgRK2LSs54hSM1EOH4SJWSY9u2860jEUOh5yT1qfgMhJ6T1Jd8u2CNmGupp++0bx8Rcy31tb4dYK6lPufb+kPfv/H+1R68S9Y99ijtKd3ryrdV1fpG5S6tJe95+nvvUEve7G/yxuXcen7Hd1cftXlo80bnLq0d0d+3SNpsJbwlTGLfq5zfFnhr+h7B+V/fGt+12Xj3lkZ/W+M8A2/2d3+dGaFy7sX949ElolXOXuzvtfq7xvfI+3XrGul+PoNKvpG49uJc49uyVu1v/l8j7xV4x/NQXg/jKs1zhULPSepzcz3a83i1Oc7tcW7vKrfq8wKD/oI0
+  </data>
+  </layer>
+  <layer name="triggers" width="62" height="46" visible="0">
+   <data encoding="base64" compression="zlib">
+   eJzt2TEOgzAMRuHc/y6wlAUk2krlYHhhjELTuD8x75OsjJb8VJamBACIbLV5Bn5zPjZb4DendBdv33ZqpXSXf+0/26kVemvQm9709kNvDXrfo/dgM6b79X7YTKnf3rPNItxf69f7vmzewv21+J5r9Pr7brWf3vT2RG8NetOb3n7U/2eoe1/t9abuSm9609uPuiu9Nb2jTs5x36gDIK4dUfsdbQ==
+  </data>
+  </layer>
+  <layer name="sprites" width="62" height="46" visible="0">
+   <data encoding="base64" compression="zlib">
+   eJzt0kEKgDAQBMH8/1/it7wHbyau61TBQG5LQ8YAAFjrmJZCt+4EunUn0K07Qafuc9oT3brv3n+X3J34z1fSrTuBbt0JdOtOoPud7vneV7ZbdZ9u3br3qe6r6gaglwu7oAK4
+  </data>
+  </layer>
+ </group>
+</map>
