@@ -35,7 +35,7 @@ class Player(pygame.sprite.Sprite):
             self.image.scroll(0, -128)
         elif self.orient == 'right':
             self.image.scroll(0, -192)
-        
+
     def update(self, dt, game):
         key = pygame.key.get_pressed()
         # Setting orientation and sprite based on key input: 
@@ -87,13 +87,23 @@ class Player(pygame.sprite.Sprite):
         if len(game.tilemap.layers['triggers'].collide(self.rect, 
                                                         'solid')) > 0:
             self.rect = lastRect
+        # Drown Collision detection:
+        # Reset to same place
+        elif len(game.tilemap.layers['triggers'].collide(self.rect, 'drown')) > 0:
+            self.rect = lastRect
+            self.rect.x = 3168
+            self.rect.y = 640
+            self.orient = 'right'
+            return
+
         # Area entry detection:
         elif len(game.tilemap.layers['triggers'].collide(self.rect, 
                                                         'entry')) > 0:
             entryCell = game.tilemap.layers['triggers'].find('entry')[0]
             game.fadeOut()
             game.initArea(entryCell['entry'])
-            
+            self.walking=False
+
             return
         # Switch to the walking sprite after 32 pixels 
         if self.dx == 32:
@@ -111,14 +121,14 @@ class Player(pygame.sprite.Sprite):
             self.walking = False
             self.setSprite()    
             self.dx = 0
-        
+
         for x in game.heartlist:
             if x.rect == self.rect:
                 x.kill()
                 game.heartlist.remove(x)
                 game.numHearts -= 1
 
-        game.tilemap.set_focus(self.rect.x, self.rect.y)
+        game.tilemap.set_focus(self.rect.x+32, self.rect.y+32)
 
 class Heart(pygame.sprite.Sprite):
     def __init__(self, location, *groups):
@@ -228,16 +238,16 @@ class Satan(pygame.sprite.Sprite):
             self.walking = False
             self.setSprite()    
             self.dx = 0
-        
+
     def update(self, dt, game):
         self.random_move(dt, game)
 
 class SpriteLoop(pygame.sprite.Sprite):
     """A simple looped animated sprite.
-    
+
     SpriteLoops require certain properties to be defined in the relevant
     tmx tile:
-    
+
     src - the source of the image that contains the sprites
     width, height - the width and height of each section of the sprite that
         will be displayed on-screen during animation
@@ -264,11 +274,11 @@ class SpriteLoop(pygame.sprite.Sprite):
             self.image = self.defaultImage.copy()
             self.image.scroll(-1*self.width*self.frameCount, 0)
             self.timeCount = 0
-            
+
             self.frameCount += 1
             if self.frameCount == self.frames:
                 self.frameCount = 0
-        
+
 class Game(object):
     def __init__(self, screen):
         self.screen = screen
@@ -304,32 +314,42 @@ class Game(object):
             pass
         else:
             self.tilemap.layers.append(self.objects)
-        # Initializing player sprite
+
+
+    def newinitPlayers(self, playerlocationx, playerlocationy):
+        self.player = Player((playerlocationx, playerlocationy),
+                             'down', self.players)
+        self.tilemap.layers.append(self.players)
+        self.tilemap.set_focus(self.player.rect.x+32, self.player.rect.y+32)
+
+    def initPlayers(self):
+        # Initializing player sprites
         startCell = self.tilemap.layers['triggers'].find('playerStart')[0]
-        self.player = Player((startCell.px, startCell.py), 
+        self.player = Player((startCell.px, startCell.py),
                              startCell['playerStart'], self.players)
         satanStart = self.tilemap.layers['triggers'].find('satanStart')[0]
-        if mapFile == 'FirstLaw.tmx':
-            self.satan = Satan((satanStart.px, satanStart.py), 
-                                 satanStart['satanStart'], self.players)
-        
-        self.numHearts = 2
+        self.satan = Satan((satanStart.px, satanStart.py), 
+                             satanStart['satanStart'], self.players)
+
+        self.numHearts = 3
         self.heartlist = []
         # for x in range(0,self.numHearts):
         ax = Heart((satanStart.px-256,satanStart.py-64), self.hearts)
         ay = Heart((satanStart.px,satanStart.py+128), self.hearts)
+        az = Heart((satanStart.px-192,satanStart.py+192), self.hearts)
         self.heartlist.append(ax)
         self.heartlist.append(ay)
+        self.heartlist.append(az)
 
         self.tilemap.layers.append(self.hearts)
         self.tilemap.layers.append(self.players)
 
-
-        self.tilemap.set_focus(self.player.rect.x, self.player.rect.y) 
+        self.tilemap.set_focus(self.player.rect.x+32, self.player.rect.y+32)
 
     def main(self):
         clock = pygame.time.Clock()
-        self.initArea('FirstLaw.tmx')
+        self.initArea('Firstlaw.tmx')
+        self.initPlayers()
         self.game_over = False
         self.havemoveddown = False
 
@@ -340,21 +360,18 @@ class Game(object):
                 if event.type == pygame.QUIT:
                     return
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                    print(f"X is {self.player.rect.x} and Y is {self.player.rect.y}")
                     return
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-                    print("wow")
-                    self.player.rect.y -= 1408
-                    self.satan.rect.y -= 1408
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-                    self.satan.kill()
-
-
-
+                    print("move to new map")
+                    myx = self.player.rect.x
+                    myy = self.player.rect.y
+                    self.initArea('open_garden.tmx')
+                    self.newinitPlayers(myx, myy)
 
             if (not self.game_over) and self.player.rect.colliderect(self.satan.rect):
                 print("Satan Collision Detected")
                 self.game_over = True;
-
 
             if not self.game_over:
                 if not self.numHearts and not self.havemoveddown:
@@ -386,10 +403,15 @@ class Game(object):
                 text_y = screen.get_height() / 2 - text_rect.height / 2
                 screen.blit(text, [text_x, text_y])
 
-            pygame.display.flip()
+            # cursurf = pygame.display.get_surface()
+            # cursurf.set_clip(pygame.Rect(self.player.rect.x,self.player.rect.y, 640, 640))
+
+
+            # pygame.display.update(cursurf.get_rect())
+            pygame.display.update()
 
 if __name__ == '__main__':
     pygame.init()
-    screen = pygame.display.set_mode((640, 480))
+    screen = pygame.display.set_mode((570, 480))
     pygame.display.set_caption("Pyllet Town")
     Game(screen).main()
