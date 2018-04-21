@@ -90,9 +90,10 @@ class Player(pygame.sprite.Sprite):
         # Drown Collision detection:
         # Reset to same place
         elif len(game.tilemap.layers['triggers'].collide(self.rect, 'drown')) > 0:
-            self.rect = lastRect
-            self.rect.x = 3168
-            self.rect.y = 640
+            entryCell = game.tilemap.layers['triggers'].find('drownreturn')[0]
+            game.initArea(entryCell['drownreturn'])
+            game.newinitPlayers(entryCell.px, entryCell.py)
+            game.player.orient = 'right'
             self.orient = 'right'
             return
 
@@ -314,7 +315,6 @@ class Game(object):
             pass
         else:
             self.tilemap.layers.append(self.objects)
-
 
     def newinitPlayers(self, playerlocationx, playerlocationy):
         self.player = Player((playerlocationx, playerlocationy),

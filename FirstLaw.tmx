@@ -34,13 +34,21 @@
  <tileset firstgid="103" name="objects" tilewidth="32" tileheight="32" tilecount="18" columns="9">
   <image source="tiles/objects.png" width="288" height="64"/>
  </tileset>
- <tileset firstgid="121" name="hearts" tilewidth="32" tileheight="32" tilecount="4" columns="2">
+ <tileset firstgid="121" name="jesus" tilewidth="32" tileheight="32" tilecount="24" columns="4">
+  <image source="tiles/jesus.png" width="128" height="192"/>
+  <tile id="0">
+   <properties>
+    <property name="jesus" value="down"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="145" name="hearts" tilewidth="32" tileheight="32" tilecount="4" columns="2">
   <image source="tiles/heart2.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="125" name="house" tilewidth="32" tileheight="32" tilecount="48" columns="8">
+ <tileset firstgid="149" name="house" tilewidth="32" tileheight="32" tilecount="48" columns="8">
   <image source="tiles/house.png" width="256" height="192"/>
  </tileset>
- <tileset firstgid="173" name="mytriggers" tilewidth="32" tileheight="32" tilecount="12" columns="6">
+ <tileset firstgid="197" name="mytriggers" tilewidth="32" tileheight="32" tilecount="12" columns="6">
   <image source="tiles/mytriggers.png" width="192" height="64"/>
   <tile id="0">
    <properties>
@@ -57,6 +65,16 @@
     <property name="drown" value="b2b"/>
    </properties>
   </tile>
+  <tile id="4">
+   <properties>
+    <property name="drownreturn" value="FirstLaw.tmx"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="drownreturn" value="FirstLaw.tmx"/>
+   </properties>
+  </tile>
   <tile id="8">
    <properties>
     <property name="drown" value="b2b"/>
@@ -68,7 +86,7 @@
    </properties>
   </tile>
  </tileset>
- <tileset firstgid="185" name="triggers" tilewidth="32" tileheight="32" tilecount="12" columns="6">
+ <tileset firstgid="209" name="triggers" tilewidth="32" tileheight="32" tilecount="12" columns="6">
   <image source="tiles/triggers.png" width="192" height="64"/>
   <tile id="0">
    <properties>
@@ -111,7 +129,7 @@
    </properties>
   </tile>
  </tileset>
- <tileset firstgid="197" name="sprites" tilewidth="32" tileheight="32" tilecount="8" columns="4">
+ <tileset firstgid="221" name="sprites" tilewidth="32" tileheight="32" tilecount="8" columns="4">
   <image source="tiles/sprites.png" width="128" height="64"/>
   <tile id="0">
    <properties>
@@ -139,17 +157,17 @@
  </layer>
  <layer name="foreground" width="160" height="120">
   <data encoding="base64" compression="zlib">
-   eJzt3LsNAyEABcHr1g7t0J/iTQuXsPiYkRDhyzZCHAcAAACwkts49wvfrO0xzvPCN2urO1Hv06o7Ue/TqvtT79Oq+1Pv06r7U+/TqvtT79Oq+1Pv06r7U+/TqvtT79Oq+1Pv06r7U+/TqvtT79Oq+1Pv06r7U+/TqvtT79Oq+1Pv06r7U+/TqvtT79Oq+1Pv06r7U+/Tqvsza/81znvCDufU/Zm1/xnnO2GHc3bpH2vapX+sqf6fQP/2Vv9PoH8AAAAAAAAAAAAA/6V+9+xd9d7qd8/eVe+t7kS9T6vuRL1Pq+5PvU+r7k+9T6vuT71Pq+5PvU+r7k+9T6vuT71Pq+5PvU+r7k+9T6vuT71Pq+5PvU9LfyjpD6W6f/U+rbp/9T6tuj/1Pq26P/U+rbo/9T6tuj/1Pq26P/U+rbo/9T6tuj/1Pq26P/U+rfp/Av3bW/0/gf4BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPR+Bt7pGw==
+   eJzt3DEOAiEARcG9rZZaaqJnlytsw8NlJiGUv3sV4TgAAACAldzGuV/4Zm2PcZ4Xvllb3Yl6n1bdiXqfVt2fep9W3Z96n1bdn3qfVt2fep9W3Z96n1bdn3qfVt2fep9W3Z96n1bdn3qfVt2fep9W3Z96n1bdn3qfVt2fep9W3Z96n1bdn3qfVt2fep9W3Z96n1bdn3qfVt2fWfuvcd4Tdjin7s+s/c843wk7nLNL/1jTLv1jTfX/BPq3t/p/Av0DAAAAAAAAAAAA+C/1u2fvqvdWv3v2rnpvdSfqfVp1J+p9WnV/6n1adX/qfVp1f+p9WnV/6n1adX/qfVp1f+p9WnV/6n1adX/qfVp1f+p9WnV/6n1a+kNJfyjV/av3adX9q/dp1f2p92nV/an3adX9qfdp1f2p92nV/an3adX9qfdp1f2p92nV/an3adX/E+jf3ur/CfQPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKD3A46z6R8=
   </data>
  </layer>
  <layer name="sprites" width="160" height="120">
   <data encoding="base64" compression="zlib">
-   eJzt3UFqxDAQAMH9/7/Cfiv3gFmcxG5LUwUDvlmgxrpZrxdP8nXDwBH9UdIfJf1R0h8l/VHSHyX98cmV+6k/PtEfJf1R0h8l/VHSHyX9UdIfJf1RuqO/36xDfzPoj7PeP+Yv9MdZ74Pnp9HfnvSnv5LzV3+70B8l/VHSHyX9UdIfpav7O3rPfw1r0x+lO87fK4e16Y+S/ijpb6Y79qbez9XWO0ndmf5mqzvT32x1Z/qbre5Mf7PVnemP3emPyorfa/ahP0r6o6Q/SvqjpD9K+qOkP0r6A4BjzjNK+qOkP0r6o6Q/SvqjpD9K+qOkP0r6o6Q/zlrl/hn2tMr9W+xJf5Scv+xCf5T0R0l/lPRHSX+U9EdJf5T0R0l/lPRHSX8z3fV/nrPDDHVn+put7kx/s9Wd6W+2ujP9zVZ3pj8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAnu4bmt9/MA==
+   eJzt3UEKgzAQQNHe/46lVyndFkSk1K+Z9yDgTiGfzM48HlzJ84QFW/RHSX+U9EdJf5T0R0l/lPTHnn/up/7Yoz9K+qOkP0r6o6Q/SvqjpD9K+qOkP0r646jX1/qF/jjqtfF8Nfpbk/70VzJ/9bcK/VHSHyX9UdIfJf1R+nd/W+/RHx/6o2T+UtIfJf1R0t9MZ+xNvZ93+95J6s70N1vdmf5mqzvT32x1Z/qbre5Mf6xOf1TueF6zDv1R0h8l/VHSHyX9UdIfJf1R0h8AbDPPKOmPkv4o6Y+S/ijpj5L+KOmPkv4o6Y+S/jjqLvfPsKa73L/FmvRHyfxlFfqjpD9K+qOkP0r6o6Q/SvqjpD9K+qOkP0r6m+ms//McXcxQd6a/2erO9Ddb3Zn+Zqs7099sdWf6AwAAAAAAAAAAAAAAAAAAAAAAAAAAAODq3o/rgBY=
   </data>
  </layer>
- <layer name="triggers" width="160" height="120">
+ <layer name="triggers" width="160" height="120" visible="0">
   <data encoding="base64" compression="zlib">
-   eJzt3MmK20AYhVG//7tkgAyQQAboPFjkhSCI7qbslnJLvufAT22MtLD4KFlGlwuz+LHMh2U+HrzCc67X35dlvh68wnP0jyT9I0n/SNK/uV2/n58PvurfvJ6W+fPAq/7Nbe1E+vzbdc/j69+81k6kz79d96J/c9M//UvSP/1L0j/9S9I//UvSP/1L0j/9Szpr/74t833w+Po3r7P279cyvwc+p39zS/Xv3TLvL/9///cS/ctI9e/TMp8vx+//rscb6ZT+Zby1N6P7sKPOf69tt/Qv4629Gd2HHXX+e227pX8ZZ73/veX4q9e6pX8ZZ73/HfXv9fdat/Qvo6F/I70a7Zv+7auhfyO9Gu2b/u2rrX9bt+7v9G9fbf3bunV/p3/7au3fvfez+rev1v7dez+rf/tq7d8ov/8dq7V/o/z+d6wZ3k/g/8+90u8n8P/nbunO6V+3dOf0r1u6c/rXLd05/euW7pz+dUt3Tv+6rb05+7zkej3r37zW3px9AAAAAACYS/o571meI3OM9HPeszxH5hjpTuhWt3QndKtbujf61y3dG/3rlu6N/nVL90b/uqV7o3/d0r3Rv27p3uhft3Rv9K9bujf61y3dG/3rpjck6Q1J6f7Z/3VL98/+r1u6N/rXLd0b/euW7o3+dUv3Rv+6pXujf93SvdG/bune6F+3dG/0r1v6/QT61y39fgL965bunP51S3dO/7qlO6d/3dKd079u6c7pX7d05/Sv29qbRx3mtvbmUQcAAAAAAAAAAAAAAAAAAAAAAAAAAID9/AW0s879
+   eJzt3Ntq20AYhVG9/3ulTU9JW+gB2oepfCEIjgNKGHWPvdeCnwFfWBcWHyPJaFmYxY913q9zf/AKl5zOvy/rPBy8wiX6R5L+kaR/JOnf3E6/z88bX/VvXn/W+XvDq/7NbetE+vjn68jv1795bZ1IH/98HUX/5qZ/+pekf/qXpH/6l6R/+pekf/qXpH/6l6R/+pekf/qXlOrf3Trvlv/fv5foX0aqf5/W+bwc37/T9+3plP5lzLL/G+3DOh8vfP5tne/L827pX8Ys+7/RHtf5euHzX+v8Xp53S/8yZunfkfu/p7Zm6d8cZunfkde/T23N0r85NPRvT6/29k3/xmro355e7e2b/o3V1r9zr93f6d9Ybf0799r9nf6N1dq/t17P6t9Yrf176/Ws/o3V2r+93P87Vmv/9nL/71gzvJ/A//96pd9P4P9/3dKd079u6c7pX7d05/SvW7pz+tct3Tn965bunP5123pz7fOS0/msf/PaenPtAwAAAADAXNLPea/lOTLHSD/nvZbnyBwj3Qnd6pbuhG51S/dG/7qle6N/3dK90b9u6d7oX7d0b/SvW7o3+tct3Rv965bujf51S/dG/7qle6N/3fSGJL0hKd0/+79u6f7Z/3VL90b/uqV7o3/d0r3Rv27p3uhft3Rv9K9bujf61y3dG/3rlu6N/nVLv59A/7ql30+gf93SndO/bunO6V+3dOf0r1u6c/rXLd05/euW7pz+ddt6c6vD3Lbe3OoAAAAAAAAAAAAAAAAAAAAAAAAAAAAwzj9/o60I
   </data>
  </layer>
 </map>
