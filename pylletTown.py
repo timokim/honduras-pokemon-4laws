@@ -322,6 +322,41 @@ class Game(object):
         self.tilemap.layers.append(self.players)
         self.tilemap.set_focus(self.player.rect.x+32, self.player.rect.y+32)
 
+    def mypred(self, row, col):
+        if row == 5 or row == 6 or row == 7:
+            if col == 6 or col == 7 or col == 8:
+                print(f"mypred: TRUE Checking for row {row} and col is {col}")
+                return True
+            else:
+                print(f"mypred: FALSE Checking for row {row} and col is {col}")
+                return False
+        else :
+            print(f"mypred: FALSE Checking for row {row} and col is {col}")
+            return False
+
+    def randomPopulateHearts(self, numHearts):
+        allPossibleHeartLocations = []
+        for i in range(0,12):
+            for j in range(0,15):
+                allPossibleHeartLocations.append((i,j))
+
+        for i in range(5,8):
+            for j in range(6,9):
+                allPossibleHeartLocations.remove((i,j))
+
+        #printrandom
+        for i in range(0,numHearts):
+            index = random.randint(0,len(allPossibleHeartLocations)-1)
+            hearttobelocated = allPossibleHeartLocations[index]
+            self.heartlist.append(Heart((64*hearttobelocated[1] + 1440, 64*hearttobelocated[0] + 256), self.hearts))
+            allPossibleHeartLocations.remove(hearttobelocated)
+
+        #printall
+        # for places in allPossibleHeartLocations:
+        #     if(not self.mypred(places[0],places[1])):
+        #         self.heartlist.append(Heart((64*places[1] + 1440, 64*places[0] + 256), self.hearts))
+        #         print(f"heart printed for row {places[0]} and Y is {places[1]}")
+
     def initPlayers(self):
         # Initializing player sprites
         startCell = self.tilemap.layers['triggers'].find('playerStart')[0]
@@ -331,20 +366,40 @@ class Game(object):
         self.satan = Satan((satanStart.px, satanStart.py), 
                              satanStart['satanStart'], self.players)
 
-        self.numHearts = 3
+        self.numHearts = 20
         self.heartlist = []
-        # for x in range(0,self.numHearts):
-        ax = Heart((satanStart.px-256,satanStart.py-64), self.hearts)
-        ay = Heart((satanStart.px,satanStart.py+128), self.hearts)
-        az = Heart((satanStart.px-192,satanStart.py+192), self.hearts)
-        self.heartlist.append(ax)
-        self.heartlist.append(ay)
-        self.heartlist.append(az)
+        
+        self.randomPopulateHearts(self.numHearts)
+
+        # self.heartlist = []
+        # # for x in range(0,self.numHearts):
+        # ax = Heart((satanStart.px-256,satanStart.py-64), self.hearts)
+        # ay = Heart((satanStart.px,satanStart.py+128), self.hearts)
+        # az = Heart((satanStart.px-192,satanStart.py+192), self.hearts)
+        # self.heartlist.append(ax)
+        # self.heartlist.append(ay)
+        # self.heartlist.append(az)
 
         self.tilemap.layers.append(self.hearts)
         self.tilemap.layers.append(self.players)
 
         self.tilemap.set_focus(self.player.rect.x+32, self.player.rect.y+32)
+
+    def heartdelayremove(self):
+        """Animate the screen fading to black for entering a new area"""
+        clock = pygame.time.Clock()
+        for i in range(0,len(self.heartlist)):
+            dt = clock.tick(10)
+            print("iteration")
+            print(i)
+            self.heartlist[i].kill()
+            self.tilemap.update(dt, self)
+            screen.fill(NEGRO)
+            self.tilemap.draw(self.screen)
+            pygame.display.update()
+
+        clock.tick(20)
+        pygame.display.flip()
 
     def main(self):
         clock = pygame.time.Clock()
@@ -353,8 +408,24 @@ class Game(object):
         self.game_over = False
         self.havemoveddown = False
 
+        heartdelaytime = 0
+        removing_heart = False
+
         while 1:
             dt = clock.tick(30)
+
+            if removing_heart:
+                print(f"heartcount is {self.numHearts} and heartdelaytime is {heartdelaytime} and ")
+                heartdelaytime += 1
+                if self.numHearts == 0:
+                    removing_heart = False
+                elif heartdelaytime > 5:
+                    x = self.heartlist[0]
+                    x.kill()
+                    self.heartlist.remove(x)
+                    self.numHearts -= 1
+                    heartdelaytime = 0
+                    
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -368,6 +439,9 @@ class Game(object):
                     myy = self.player.rect.y
                     self.initArea('open_garden.tmx')
                     self.newinitPlayers(myx, myy)
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_t:
+                    print("TTT")
+                    removing_heart = True
 
             if (not self.game_over) and self.player.rect.colliderect(self.satan.rect):
                 print("Satan Collision Detected")

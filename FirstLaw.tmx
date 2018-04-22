@@ -165,9 +165,9 @@
    eJzt3UEKgzAQQNHe/46lVyndFkSk1K+Z9yDgTiGfzM48HlzJ84QFW/RHSX+U9EdJf5T0R0l/lPTHnn/up/7Yoz9K+qOkP0r6o6Q/SvqjpD9K+qOkP0r646jX1/qF/jjqtfF8Nfpbk/70VzJ/9bcK/VHSHyX9UdIfJf1R+nd/W+/RHx/6o2T+UtIfJf1R0t9MZ+xNvZ93+95J6s70N1vdmf5mqzvT32x1Z/qbre5Mf6xOf1TueF6zDv1R0h8l/VHSHyX9UdIfJf1R0h8AbDPPKOmPkv4o6Y+S/ijpj5L+KOmPkv4o6Y+S/jjqLvfPsKa73L/FmvRHyfxlFfqjpD9K+qOkP0r6o6Q/SvqjpD9K+qOkP0r6m+ms//McXcxQd6a/2erO9Ddb3Zn+Zqs7099sdWf6AwAAAAAAAAAAAAAAAAAAAAAAAAAAAODq3o/rgBY=
   </data>
  </layer>
- <layer name="triggers" width="160" height="120" visible="0">
+ <layer name="triggers" width="160" height="120">
   <data encoding="base64" compression="zlib">
-   eJzt3Ntq20AYhVG9/3ulTU9JW+gB2oepfCEIjgNKGHWPvdeCnwFfWBcWHyPJaFmYxY913q9zf/AKl5zOvy/rPBy8wiX6R5L+kaR/JOnf3E6/z88bX/VvXn/W+XvDq/7NbetE+vjn68jv1795bZ1IH/98HUX/5qZ/+pekf/qXpH/6l6R/+pekf/qXpH/6l6R/+pekf/qXlOrf3Trvlv/fv5foX0aqf5/W+bwc37/T9+3plP5lzLL/G+3DOh8vfP5tne/L827pX8Ys+7/RHtf5euHzX+v8Xp53S/8yZunfkfu/p7Zm6d8cZunfkde/T23N0r85NPRvT6/29k3/xmro355e7e2b/o3V1r9zr93f6d9Ybf0799r9nf6N1dq/t17P6t9Yrf176/Ws/o3V2r+93P87Vmv/9nL/71gzvJ/A//96pd9P4P9/3dKd079u6c7pX7d05/SvW7pz+tct3Tn965bunP5123pz7fOS0/msf/PaenPtAwAAAADAXNLPea/lOTLHSD/nvZbnyBwj3Qnd6pbuhG51S/dG/7qle6N/3dK90b9u6d7oX7d0b/SvW7o3+tct3Rv965bujf51S/dG/7qle6N/3fSGJL0hKd0/+79u6f7Z/3VL90b/uqV7o3/d0r3Rv27p3uhft3Rv9K9bujf61y3dG/3rlu6N/nVLv59A/7ql30+gf93SndO/bunO6V+3dOf0r1u6c/rXLd05/euW7pz+ddt6c6vD3Lbe3OoAAAAAAAAAAAAAAAAAAAAAAAAAAAAwzj9/o60I
+   eJzt3FmK20AYhVHvf18ZOzMkHUgWk/KDoBE2qLul3LLvOfBToAfLYPOhCZ1OzOLnmHdj3h+8wiXn/9/nMV8OXuES/SNJ/0jSP5L0b27n3+fXna/6N68/Y/7e8ap/c1s6kd7/et3z8/VvXksn0vtfr3vRv7npn/4l6Z/+Jemf/iXpn/4l6Z/+Jemf/iXpn/4l6Z/+JaX692bM29P/7981+peR6t/DmE+n4/t3/rwtndK/jNf25vuYH8H9X/NhzMcL25fvu+6W/mW8tjePY34H93/N1zHfLmxfvu+6W/qX0XD++9TSLP2bQ8P571NLs/RvDg3929KrrX3Tv3019G9Lr7b2Tf/21da/tece3+nfvtr6t/bc4zv921dr/156Pqt/+2rt30vPZ/VvX63928r1v2O19m8r1/+ONcP7CTz/1yv9fgLP/3VLd07/uqU7p3/d0p3Tv27pzulft3Tn9K9bunP6123pza3PNef/s/7Na+nNrQ8AAAAAAHNJ3+e9lfvIHCN9n/dW7iNzjHQndKtbuhO61S3dG/3rlu6N/nVL90b/uqV7o3/d0r3Rv27p3uhft3Rv9K9bujf61y3dG/3rlu6N/nXTG5L0hqR0/xz/dUv3z/Fft3Rv9K9bujf61y3dG/3rlu6N/nVL90b/uqV7o3/d0r3Rv27p3uhft/T7CfSvW/r9BPrXLd05/euW7pz+dUt3Tv+6pTunf93SndO/bunO6V+3pTf3Osxt6c29DgAAAAAAAAAAAAAAAAAAAAAAAAAAAPv5B3gcsFo=
   </data>
  </layer>
 </map>
