@@ -90,7 +90,7 @@
   <image source="tiles/triggers.png" width="192" height="64"/>
   <tile id="0">
    <properties>
-    <property name="playerStart" value="down"/>
+    <property name="JugadorStart" value="down"/>
    </properties>
   </tile>
   <tile id="2">
@@ -167,7 +167,8 @@
  </layer>
  <layer name="triggers" width="160" height="120">
   <data encoding="base64" compression="zlib">
-   eJzt3FmK20AYhVHvf18ZOzMkHUgWk/KDoBE2qLul3LLvOfBToAfLYPOhCZ1OzOLnmHdj3h+8wiXn/9/nMV8OXuES/SNJ/0jSP5L0b27n3+fXna/6N68/Y/7e8ap/c1s6kd7/et3z8/VvXksn0vtfr3vRv7npn/4l6Z/+Jemf/iXpn/4l6Z/+Jemf/iXpn/4l6Z/+JaX692bM29P/7981+peR6t/DmE+n4/t3/rwtndK/jNf25vuYH8H9X/NhzMcL25fvu+6W/mW8tjePY34H93/N1zHfLmxfvu+6W/qX0XD++9TSLP2bQ8P571NLs/RvDg3929KrrX3Tv3019G9Lr7b2Tf/21da/tece3+nfvtr6t/bc4zv921dr/156Pqt/+2rt30vPZ/VvX63928r1v2O19m8r1/+ONcP7CTz/1yv9fgLP/3VLd07/uqU7p3/d0p3Tv27pzulft3Tn9K9bunP6123pza3PNef/s/7Na+nNrQ8AAAAAAHNJ3+e9lfvIHCN9n/dW7iNzjHQndKtbuhO61S3dG/3rlu6N/nVL90b/uqV7o3/d0r3Rv27p3uhft3Rv9K9bujf61y3dG/3rlu6N/nXTG5L0hqR0/xz/dUv3z/Fft3Rv9K9bujf61y3dG/3rlu6N/nVL90b/uqV7o3/d0r3Rv27p3uhft/T7CfSvW/r9BPrXLd05/euW7pz+dUt3Tv+6pTunf93SndO/bunO6V+3pTf3Osxt6c29DgAAAAAAAAAAAAAAAAAAAAAAAAAAAPv5B3gcsFo=
+   eJzt3Ntq20AYhVG//3ul5zRtoQdoHybyxYARcXASqXvsvRb8zIVBurD4GEtGhwOz+LnM+2U+7LzCU47X3/0yX3de4Sn6R5L+kaR/JOnf3I7fz68bX/VvXn+X+XfDq/7NbXQiff71uuXx9W9eoxPp86/Xrejf3PRP/5L0T/+S9E//kvRP/5L0T/+S9E//kvRP/5L0T/+SUv27W+bd4f/37xz9y0j17/MyXw779+94vEs6pX8Zb+3N92V+BM9/zsdlPj3z+WjXoH8Zb+3N72X+BM9/zsMy3575fLRr0L+Mht+/p9btGvQvo+H376l1uwb9y2jo32mn1t0b9C2joX+nnVp3b9C3jLb+rb10f6eP22rr39pL93f6uK3W/r12v6d/22rt32v3e/q3rdb+Xcr9v3219u9S7v/ta4b3E/j/X6/0+wn8/69bunP61y3dOf3rlu6c/nVLd07/uqU7p3/d0p3Tv26jN9c+5xyvZ/2b1+jNtQ8AAAAAAHNJP+e9lufI7CP9nPdaniOzj3QndKtbuhO61S3dG/3rlu6N/nVL90b/uqV7o3/d0r3Rv27p3uhft3Rv9K9bujf61y3dG/3rlu6N/nXTG5L0hqR0/+z/uqX7Z//XLd0b/euW7o3+dUv3Rv+6pXujf93SvdG/bune6F+3dG/0r1u6N/rXLf1+Av3rln4/gf51S3dO/7qlO6d/3dKd079u6c7pX7d05/SvW7pz+tdt9OZWh7mN3tzqAAAAAAAAAAAAAAAAAAAAAAAAAAAAsJ1HM/mjig==
   </data>
  </layer>
+ <imagelayer name="jesuslayer"/>
 </map>

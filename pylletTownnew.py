@@ -148,20 +148,6 @@ class Jugador(pygame.sprite.Sprite):
                 del game.fruto
                 game.comi_fruto = True
 
-        if game.map_ahora == "agua_map.tmx":
-            if game.jesus.rect == self.rect:
-                game.jesus.kill()
-                for i in range(0, len(game.agualist)):
-                    game.agualist[i].kill()
-
-        if game.map_ahora == "agua_map.tmx":
-            if self.rect.colliderect(game.jesus2.rect):
-                game.juego_complete = True
-                #self.drawSplashScreen("Well Done")
-
-
-
-
         # if not game.jesus.rect == self.rect
 
 
@@ -197,6 +183,7 @@ class Agua(pygame.sprite.Sprite):
         self.dtleft = True
 
     def update(self, dt, game):
+        print(dt)
         self.dtcount +=1
         if self.dtcount == 6:
             self.dtcount = 0
@@ -403,8 +390,6 @@ class Juego(object):
     def __init__(self, pantalla):
         self.pantalla = pantalla
 
-
-
     def fadeOut(self):
         """Animate the pantalla fading to black for entering a new area"""
         clock = pygame.time.Clock()
@@ -445,12 +430,11 @@ class Juego(object):
         
         if self.map_ahora == "agua_map.tmx":
             self.Jugador = Jugador((8*32,20*32), 'right', self.Jugadors)
-            self.jesus = Jesus((24*32, 20*32), self.JesusLayer)
-            self.jesus2 = Jesus((36*32, 18*32), self.JesusLayer)
-            self.agualist = []
-            for i in range(24,34):
-                self.agualist.append(Agua((i*32,18*32), self.aguas))
-                self.agualist.append(Agua((i*32,19*32), self.aguas))    
+            self.jesus = Jesus((12*32, 20*32), self.JesusLayer)
+            self.agua = Agua((17*32, 20*32), self.aguas)
+            self.agua2 = Agua((18*32, 20*32), self.aguas)
+            self.agua3 = Agua((19*32, 20*32), self.aguas)
+            self.agua4 = Agua((20*32, 20*32), self.aguas)
             self.tilemap.layers.append(self.JesusLayer)
             self.tilemap.layers.append(self.aguas)
         else :
@@ -530,6 +514,8 @@ class Juego(object):
         pygame.display.flip()
 
     def removeHearts(self, heartdelaytime):
+        print(f"heartcount is {self.numeroCorazones} and heartdelaytime is {heartdelaytime} and ")
+        
         if self.numeroCorazones == 0:
             return False
         elif heartdelaytime > 5:
@@ -543,8 +529,8 @@ class Juego(object):
     def drawScoreBoard(self):
         font = pygame.font.Font(None, 24)
 
-        if (self.numeroCorazones == 0):
-            text = font.render(f"Corazones x {self.numeroCorazones} puedes salir a la derecho", True, NEGRO)
+        if self.numeroCorazones == 0:
+            text = font.render(f"Corazones x {self.numeroCorazones}, puedes salir a la derecho", True, NEGRO)
         else:
             text = font.render(f"Corazones x {self.numeroCorazones}", True, NEGRO)
 
